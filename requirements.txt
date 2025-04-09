@@ -1,2 +1,5 @@
 flask
 pytest
+flask-cors
+mysql-connector-python
+flask-session
