@@ -1,0 +1,14 @@
+{
+    "Pipeline": {
+        "pipeline_type": "VARCHAR(100)",
+        "pipeline_id": "INT"
+    },
+
+    "Jenkins": {
+        "connector_id": "INT",
+        "build_type": "VARCHAR(100)",
+        "test_type": "VARCHAR(100)",
+        "deploy_type": "VARCHAR(100)",
+        "folder": "VARCHAR(100)"
+    }
+}

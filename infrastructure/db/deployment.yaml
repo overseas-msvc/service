@@ -1,27 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: service
+  name: service-mysql-deployment
   labels:
-    app: service
+    app: mysql
     service: service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: service
+      app: mysql
       service: service
   template:
     metadata:
       labels:
-        app: service
+        app: mysql
         service: service
     spec:
       containers:
-      - name: service-container
-        image: hhana982/1.<version>:1.0
+      - name: service-mysql
+        image: mysql
         ports:
-        - containerPort: 5000
-        env: 
-        - name: num
-          value: "5"
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: 'rootpassword'

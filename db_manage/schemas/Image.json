@@ -1,0 +1,16 @@
+{
+    "Image": {
+        "image_type": "VARCHAR(100)",
+        "image_id": "INT",
+        "registry_type": "VARCHAR(100)",
+        "registry_id": "INT"
+    },
+
+    "Docker": {
+        "image": "VARCHAR(100)"
+    },
+
+    "DockerHub": {
+        "connector_id": "INT"
+    }
+}

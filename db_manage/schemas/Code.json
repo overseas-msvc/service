@@ -1,0 +1,10 @@
+{
+    "Code": {
+        "code_type": "VARCHAR(100)",
+        "code_id": "INT"
+    },
+
+    "Flask": {
+        
+    }
+}

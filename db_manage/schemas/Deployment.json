@@ -1,0 +1,34 @@
+{
+    "Deployment": {
+        "deployment_type": "VARCHAR(100)",
+        "deployment_id": "INT"
+    },
+
+    "Kubernetes": {
+        "connector_id": "INT",
+        "namespace": "VARCHAR(100)"
+    },
+
+    "KubernetesComponent": {
+        "kubernetes_id": "INT",
+        "component_type": "VARCHAR(100)",
+        "component_id": "INT"
+    },
+
+    "KubernetesDeployment": {
+        "port": "VARCHAR(100)",
+        "image": "VARCHAR(100)",
+        "autoScale": "VARCHAR(100)",
+        "minReplicas": "VARCHAR(100)",
+        "maxReplicas": "VARCHAR(100)",
+        "app": "VARCHAR(100)"
+    },
+
+    "Variable": {
+        "parent_type": "VARCHAR(100)",
+        "parent_id": "INT",
+        "name": "VARCHAR(100)",
+        "value": "VARCHAR(20)"
+    }
+
+}

@@ -1,0 +1,49 @@
+{
+    "Service": {
+        "name": "VARCHAR(100)",
+        "project_id": "INT",
+        "service_type": "VARCHAR(100)",
+        "service_id": "INT",
+        "version": "VARCHAR(20)"
+    },
+
+    "Endpoint": {
+        "name": "VARCHAR(100)",
+        "path": "VARCHAR(100)",
+        "method": "VARCHAR(100)",
+        "description": "VARCHAR(100)"
+    },
+
+    "EndpointVariable": {
+        "endpoint_id": "INT",
+        "name": "VARCHAR(50)",
+        "type": "VARCHAR(20)",
+        "optional": "VARCHAR(10)"
+    },
+
+    "ContainerService": {
+        "repo_type": "VARCHAR(100)",
+        "repo_id": "INT",
+        "image_type": "VARCHAR(100)",
+        "image_id": "INT",
+        "acr_type": "VARCHAR(100)",
+        "acr_id": "INT",
+        "deployment_type": "VARCHAR(100)",
+        "deployment_id": "INT",
+        "code_type": "VARCHAR(100)",
+        "code_id": "INT",
+        "pipeline_type": "VARCHAR(100)",
+        "pipeline_id": "INT",
+        "test_type": "VARCHAR(100)",
+        "test_id": "INT"
+    },
+    "VmService": {
+
+    },
+    "ServerlessService": {
+
+    },
+    "ThiredpartyConnectorService": {
+
+    }
+}

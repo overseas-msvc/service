@@ -1,0 +1,10 @@
+{
+    "Test": {
+        "test_type": "VARCHAR(100)",
+        "test_id": "INT"
+    },
+
+    "Pytest": {
+
+    }
+}
