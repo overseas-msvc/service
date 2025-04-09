@@ -58,17 +58,17 @@ class Service:
         return service_id
 
     def create_service(self, trigger=True):
-        # create_repo(self.ids.repo_id)
-        # create_registry_repository(self.ids.image_id)
-        # self.upload_infrastucture_folder()
-        # self.upload_code_files()
-        # self.upload_test_files()
-        # create_pipeline(self.ids.pipeline_id, {
-        #     "name": self.name,
-        #     "repo": get_repo(self.ids.repo_id),
-        #     "deployment": get_deployment(self.ids.deployment_id),
-        #     "artifact": get_artifact(self.ids.image_id)
-        # })
+        create_repo(self.ids.repo_id)
+        create_registry_repository(self.ids.image_id)
+        self.upload_infrastucture_folder()
+        self.upload_code_files()
+        self.upload_test_files()
+        create_pipeline(self.ids.pipeline_id, {
+            "name": self.name,
+            "repo": get_repo(self.ids.repo_id),
+            "deployment": get_deployment(self.ids.deployment_id),
+            "artifact": get_artifact(self.ids.image_id)
+        })
         self.add_repo_webhook()
         if trigger:
             trigger_pipeline(self.ids.pipeline_id, self.name)
