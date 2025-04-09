@@ -5,3 +5,6 @@ __pycache__/
 # Ignore all .pyc files
 *.pyc
 flask_session/*
+report.xml
+db_manage/local_values.py
+.vscode/settings.json
