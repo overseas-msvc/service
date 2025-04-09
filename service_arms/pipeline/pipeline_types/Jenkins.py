@@ -267,7 +267,7 @@ class Jenkins:
                         <id>{credential.id}</id>
                         <description>{credential.description}</description>
                         <fileName>{credential.file.name}</fileName>
-                        <secretBytes>{base64.b64encode(credential.file.content).decode()}</secretBytes>
+                        <secretBytes>{credential.file.content}</secretBytes>
                         </org.jenkinsci.plugins.plaincredentials.impl.FileCredentialsImpl>"""
 
         # Convert to JSON string
