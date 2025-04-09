@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: service-container
-        image: hhana982/1.<version>:1.0
+        image: hhana982/1.<version>
         ports:
         - containerPort: 5000
         env: 
