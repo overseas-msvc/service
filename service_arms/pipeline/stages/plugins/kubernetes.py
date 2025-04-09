@@ -10,7 +10,7 @@ def get_kubernetes_deploy(deployment):
     ###testing mode
     kubeconfig = get_file_from_connector(deployment["connector_id"], "kubeconfig")
     ###end
-    deploy.credentials.append(SecretFile(File("kubeconfig", kubeconfig["file_content"].encode('utf-8')), "kubeconfig"))
+    deploy.credentials.append(SecretFile(File("kubeconfig", kubeconfig["file_content"]), "kubeconfig"))
     step = f"""withKubeConfig([credentialsId: 'kubeconfig']) {{
 					powershell '''
 						kubectl create namespace {deployment['namespace']}
