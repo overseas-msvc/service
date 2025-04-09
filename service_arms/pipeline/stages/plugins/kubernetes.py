@@ -8,7 +8,7 @@ def get_kubernetes_deploy(deployment):
     # service.pipeline.install_jenkins_plugin("Kubernetes Continuous Deploy Plugin")
     deploy = Stage("Deploy")
     ###testing mode
-    kubeconfig = get_file_from_connector(deployment.connector_id, "kubeconfig")
+    kubeconfig = get_file_from_connector(deployment["connector_id"], "kubeconfig")
     ###end
     deploy.credentials.append(SecretFile(File("kubeconfig", kubeconfig), "kubeconfig"))
     step = f"""withKubeConfig([credentialsId: 'kubeconfig']) {{
