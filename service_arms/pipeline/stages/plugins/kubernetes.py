@@ -1,14 +1,14 @@
 
 from service_arms.pipeline.stages.objects.Stage import Stage
 from service_arms.pipeline.stages.objects.credentials.SecretFile import SecretFile
+from service_comunications.connectors import get_file_from_connector
 from folder.Folder import File
 
 def get_kubernetes_deploy(deployment):
     # service.pipeline.install_jenkins_plugin("Kubernetes Continuous Deploy Plugin")
     deploy = Stage("Deploy")
     ###testing mode
-    with open("C:\\Users\\hhana\\.kube\\config", "rb") as f:
-        kubeconfig = f.read()
+    kubeconfig = get_file_from_connector(deployment.connector_id, "kubeconfig")
     ###end
     deploy.credentials.append(SecretFile(File("kubeconfig", kubeconfig), "kubeconfig"))
     step = f"""withKubeConfig([credentialsId: 'kubeconfig']) {{
