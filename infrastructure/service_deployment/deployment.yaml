@@ -19,9 +19,6 @@ spec:
     spec:
       containers:
       - name: service-container
-        image: hhana982/1.<version>
+        image: hhana982/service:1.<version>
         ports:
         - containerPort: 5000
-        env: 
-        - name: num
-          value: "5"
