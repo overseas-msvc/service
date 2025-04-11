@@ -2,8 +2,9 @@ from service_arms.repo.repo import create_repo, get_repo, upload_folder_to_githu
                                    upload_files_to_github, add_webhook
 from service_arms.deployment.deployment import get_yamls, get_deployment, write_deployment_to_db
 from service_arms.pipeline.pipeline import create_pipeline, get_pipeline_obj, write_pipeline_to_db, \
-    trigger_pipeline, get_host
-from service_arms.image.image import write_image_to_db, create_registry_repository, get_artifact
+                                    trigger_pipeline, get_host
+from service_arms.image.image import write_image_to_db, create_registry_repository, get_artifact, \
+                                    get_address
 from service_arms.endpoints.endpoints import write_endpoints_to_db, get_endpoints
 from service_arms.code.code import write_code_to_db, get_files
 from service_arms.test.test import get_test_files, write_test_to_db
@@ -80,7 +81,8 @@ class Service:
 
     def upload_infrastucture_folder(self):
         infrastructure_folder = Folder("infrastructure")
-        yamls = get_yamls(self.ids.deployment_id, self.name)
+        address = get_address(self.ids.image_id)
+        yamls = get_yamls(self.ids.deployment_id, self.name, address)
         infrastructure_folder.add_folders(yamls)
         upload_folder_to_github(self.ids.repo_id, infrastructure_folder)
 

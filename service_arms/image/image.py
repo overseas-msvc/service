@@ -31,6 +31,9 @@ def get_artifact(image_id):
         "registry": get_registry(image_id)
     }
 
+def get_address(image_id):
+    return f"{get_registry_obj(image_id).address}/{get_image_obj(image_id).image}"
+
 def get_image(image_id):
     db = Database("Image")
     image = db.get_object_by_id("Image", image_id)

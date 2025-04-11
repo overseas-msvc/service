@@ -17,11 +17,15 @@
 
     "KubernetesDeployment": {
         "port": "VARCHAR(100)",
-        "image": "VARCHAR(100)",
-        "autoScale": "VARCHAR(100)",
-        "minReplicas": "VARCHAR(100)",
-        "maxReplicas": "VARCHAR(100)",
-        "app": "VARCHAR(100)"
+        "app": "VARCHAR(100)",
+        "include_autoScale": "VARCHAR(20)",
+        "include_service": "VARCHAR(20)"
+    },
+
+    "Hpa": {
+        "KubernetesDeployment_id": "INT",
+        "min_replicas": "VARCHAR(100)",
+        "max_replicas": "VARCHAR(100)"
     },
 
     "Variable": {

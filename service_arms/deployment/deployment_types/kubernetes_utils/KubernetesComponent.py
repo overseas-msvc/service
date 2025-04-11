@@ -3,7 +3,7 @@ import os
 from folder.Folder import Folder, File
 
 
-class KubernetsService:
+class KubernetsComponent:
 
     folder_path = "service_arms/deployment/deployment_types/kubernetes_utils/yaml_templates/{service_type}"
     

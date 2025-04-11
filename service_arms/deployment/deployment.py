@@ -6,32 +6,19 @@ def write_deployment_to_db(deployment_info):
     db = Database("Deployment")
     deployment_type = deployment_info["deployment_type"]
     del deployment_info["deployment_type"]
-    deployment_components = deployment_info["components"]
-    del deployment_info["components"]
-    deployment_id = db.add_object(deployment_type, deployment_info)
-    for component in deployment_components:
-        component_type = component["component_type"]
-        del component["component_type"]
-        component_variables = component["variables"]
-        del component["variables"]
-        component_id = db.add_object(component_type, component)
-        # the word kubernetes shouldnt be here
-        db.add_object("KubernetesComponent", {"component_type": component_type,
-                                              "component_id": component_id,
-                                              "kubernetes_id": deployment_id})
-        for variable in component_variables:
-            variable["parent_type"] = component_type
-            variable["parent_id"] = component_id
-            db.add_object("Variable", variable)
+    deployment_class = get_deployment_class(deployment_type)
+
+    deployment_id = deployment_class.write_to_db(deployment_info)
+    #########################
     deployment_id = db.add_object("Deployment", {
         "deployment_type": deployment_type,
         "deployment_id": deployment_id
     })
     return deployment_id
 
-def get_yamls(deployment_id, service_name):
+def get_yamls(deployment_id, service_name, image):
     deployment = get_deployment_obj(deployment_id)
-    folder = deployment.get_yamls(service_name)
+    folder = deployment.get_yamls(service_name, image)
     return folder
     # fetch the deployment from db and then get yamls and return folder
 
@@ -50,3 +37,8 @@ def get_deployment_obj(deployment_id):
     module = importlib.import_module(f"service_arms.deployment.deployment_types.{deployment_type}")
     deployment = getattr(module, deployment_type)(deployment)
     return deployment
+
+def get_deployment_class(deployment_type):
+    module = importlib.import_module(f"service_arms.deployment.deployment_types.{deployment_type}")
+    deployment_class = getattr(module, deployment_type)
+    return deployment_class
